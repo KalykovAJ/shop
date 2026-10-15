@@ -16,7 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from core.settings import DEBUG
+from django.conf.urls.static import static
+from core.settings import DEBUG, MEDIA_ROOT, MEDIA_URL
 from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
@@ -27,3 +28,4 @@ urlpatterns = [
 
 if DEBUG:
     urlpatterns += debug_toolbar_urls()
+    urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
